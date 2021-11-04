@@ -60,7 +60,7 @@ const ContactsList: React.FC = ({ navigation }): JSX.Element => {
       </View>
       <View>
         {Object.values(contactMapHelper(contact)).map(
-          value => <Text>{value as String}</Text>
+          (value, idx) => <Text key={idx.toString()}>{value as String}</Text>
         )}
       </View>
     </TouchableOpacity>
