@@ -5,26 +5,19 @@ import * as Colors from '@pxblue/colors';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './index';
 
-const Menu = wrapIcon({ IconClass: MatIcon, name: 'menu', flip: false });
-const Home = wrapIcon({ IconClass: MatIcon, name: 'home', flip: false });
-const LooksOne = wrapIcon({ IconClass: MatIcon, name: 'looks-one', flip: false });
-const LooksTwo = wrapIcon({ IconClass: MatIcon, name: 'looks-two', flip: false });
+const Home = wrapIcon({ IconClass: MatIcon, name: 'phone', flip: false });
+const LooksOne = wrapIcon({ IconClass: MatIcon, name: 'message', flip: false });
 
 export const navGroupItems: NavItem[] = [
     {
-        title: 'Home Page',
-        itemID: 'Home',
+        title: 'Contacts',
+        itemID: 'ContactsList',
         icon: Home,
     },
     {
-        title: 'Page One',
-        itemID: 'PageOne',
+        title: 'Conversations',
+        itemID: 'ConversationsList',
         icon: LooksOne,
-    },
-    {
-        title: 'Page Two',
-        itemID: 'PageTwo',
-        icon: LooksTwo,
     },
 ];
 
@@ -33,7 +26,7 @@ export type NavDrawerProps = {
 };
 
 export const NavigationDrawer: React.FC<NavDrawerProps> = ({ navigation }) => {
-    const [selected, setSelected] = useState('Home');
+    const [selected, setSelected] = useState('ContactsList');
     const selectItem = useCallback(
         (id) => {
             navigation.navigate(id);
@@ -45,15 +38,9 @@ export const NavigationDrawer: React.FC<NavDrawerProps> = ({ navigation }) => {
     return (
         <Drawer activeItem={selected} onItemSelect={(id: string): void => selectItem(id)}>
             <DrawerHeader
-                title={'PX Blue'}
+                title={'Super Chat'}
                 subtitle={'React Native Project'}
                 fontColor={Colors.white[50]}
-                icon={{
-                    icon: Menu,
-                    onPress: (): void => {
-                        navigation.closeDrawer();
-                    },
-                }}
             />
             <DrawerBody>
                 <DrawerNavGroup items={navGroupItems} hidePadding={false} />

@@ -10,13 +10,21 @@ import { Provider as ThemeProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as PXBThemes from '@pxblue/react-native-themes';
 import { MainRouter } from './src/navigation';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './src/store/store';
 
 export const App = (): JSX.Element => (
-    <ThemeProvider theme={PXBThemes.blue}>
-        <SafeAreaProvider>
-            <MainRouter />
-        </SafeAreaProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <ThemeProvider theme={PXBThemes.blue}>
+                <SafeAreaProvider>
+                    <MainRouter />
+                </SafeAreaProvider>
+            </ThemeProvider>
+        </PersistGate>
+    </Provider>
+
 );
 
 export default App;

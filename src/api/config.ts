@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://my-json-server.typicode.com/super-chat/sc-challenge-mock-api'
